@@ -9,7 +9,6 @@
         
         Title="MainWindow" Height="700" Width="700" WindowStyle="None" MouseLeftButtonDown="dragMe" WindowStartupLocation="CenterOwner" AllowsTransparency="True" Background="Transparent">
     <Border CornerRadius="30" BorderThickness="10" BorderBrush="#FF9067F8">
-
         <Grid Background="#FF9067F8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*"></RowDefinition>
@@ -17,15 +16,44 @@
                 <RowDefinition Height="7.5*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid >
+                
                 <Image Source="Images/battery.png" Height="35" VerticalAlignment="Top" RenderTransformOrigin="0.56,0.545" Margin="290,-2,-290,0"></Image>
                 <Image Source="Images/wifi.png" Height="35" VerticalAlignment="Bottom"  Margin="200,-2,-268,3" RenderTransformOrigin="0.502,1.062"></Image>
                 <Image Source="Images/signal.png" Height="34" VerticalAlignment="Top"  Margin="180,0,-180,0" RenderTransformOrigin="0.502,1.062"></Image>
                 <Label Name="lblTime" FontWeight="Bold" FontSize="13">09:48</Label>
             </Grid>
             <Grid Grid.Row="1">
-                <TextBox></TextBox>
+                <Border Width="200 " Height="40" CornerRadius="30" BorderThickness="10" BorderBrush="Black" Margin="75,34,405,33">
+                    <Grid>
+                    <TextBox  Height="40" Width="240"  Background="Black" Foreground="White" BorderThickness="0" Name="txb_main" FontSize="12"  Padding="10,2,0,0" LostFocus="txb_main_LostFocus" TextChanged="txb_main_TextChanged"></TextBox>
+                    <TextBox  Height="40" Width="240"  Background="Black" Foreground="White" BorderThickness="0" Name="txb_watermark" FontSize="15"  Padding="10,2,0,0" GotFocus="txb_watermark_GotFocus" Text="Search..." ></TextBox>
+                    </Grid>
+                </Border>
+                <materialDesign:PopupBox
+  Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
+  PlacementMode="BottomAndAlignCentres"
+  ToggleCheckedContentCommand="{Binding FloatingActionDemoCommand}"
+  ToggleCheckedContentCommandParameter="wowsers"
+  ToolTip="Shut Down and Add product"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="580,10,0,41" Background="#FF14150F" FontWeight="Bold" Foreground="#DD906794">
+                    <materialDesign:PopupBox.ToggleCheckedContent>
+                        <materialDesign:PackIcon
+      Kind="Pencil"
+      Width="24"
+      Height="24" />
+                    </materialDesign:PopupBox.ToggleCheckedContent>
+                    <StackPanel>
+                        <Button x:Name="ShutDown" Click="ShutDown_Click" ToolTip="Shut Down" Content="1" Height="25" Width="30">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/icons8-shutdown-96.png"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Name="AddPhone" Click="AddPhone_Click" FontWeight="ExtraBold" Height="25" Width="30" ToolTip="Add Phone" Content="Add" />
+                        
+                    </StackPanel>
+                </materialDesign:PopupBox>
             </Grid>
-            <ListBox Grid.Row="2"  FontSize="32" ItemsSource="{Binding Products}" BorderThickness="0" Height="505" VerticalAlignment="Bottom" Background="#FF9067F8">
+            <ListBox Name="ProductListBox" Grid.Row="2"  FontSize="32" ItemsSource="{Binding Products}" BorderThickness="0" Height="505" VerticalAlignment="Bottom" Background="#FF9067F8" MouseDoubleClick="ProductListBox_MouseDoubleClick">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel></WrapPanel>
@@ -37,8 +65,8 @@
                         </local:ProductControl>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-
             </ListBox>
+            <Separator HorizontalAlignment="Left" Height="100" Margin="-20,-15,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="700" Background="#FF0C0909"/>
 
         </Grid>
     </Border>

@@ -23,3 +23,5 @@ C:\Users\Amiraslan\source\repos\Online-Store\Online-Store\obj\Debug\Online-Store
 C:\Users\Amiraslan\source\repos\Online-Store\Online-Store\obj\Debug\ProductControl.g.cs
 C:\Users\Amiraslan\source\repos\Online-Store\Online-Store\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Amiraslan\source\repos\Online-Store\Online-Store\obj\Debug\ProductControl.baml
+C:\Users\Amiraslan\source\repos\Online-Store\Online-Store\obj\Debug\EditWindow.g.cs
+C:\Users\Amiraslan\source\repos\Online-Store\Online-Store\obj\Debug\EditWindow.baml
